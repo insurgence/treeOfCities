@@ -84,6 +84,10 @@ static class Rec
 {
     public static string[] myRec(string[] childrens)
     {
+        foreach( var ch in childrens)
+        {
+            
+        }
         return childrens;
     }
 }
