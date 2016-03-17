@@ -80,6 +80,14 @@ static class DemoUtil
     }
 }
 
+static class Rec
+{
+    public static string[] myRec(string[] childrens)
+    {
+        return childrens;
+    }
+}
+
 namespace treeOfCities
 {
     class Program
@@ -97,6 +105,7 @@ namespace treeOfCities
             {
                 List<string> touch  = new List<string>();
                 var tree = new Tree<string>();
+                string[] temp;
 
                 Console.Write("Write country for search: ");
                 string country = Console.ReadLine();
@@ -108,7 +117,7 @@ namespace treeOfCities
                     if (line.Substring(0, country.Length).Contains(country))
                     {
                         string  stemp = line;
-                        string[] temp = stemp.
+                                 temp = stemp.
                                             Substring(line.IndexOf(":") + 1, line.Length - line.IndexOf(":") - 1).
                                             Trim().
                                             Replace(" ", string.Empty).
@@ -118,14 +127,19 @@ namespace treeOfCities
                         foreach(var child in temp)
                             tree.AddChild(tree.Root, child);
 
-                        tree.Print();
+                        Rec.myRec(temp);
 
+                        break;
                     }
                 }
-                
+
+                tree.Print();
+
                 Console.WriteLine("Press any key to exit...");
                 Console.ReadKey();
             }
         }
     }
 }
+
+
